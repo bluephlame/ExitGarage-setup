@@ -1,21 +1,25 @@
 {
     "bridge": {
-        "name": "HomePi-Dev",
+        "name": "Exitgarage-Plus",
         "username": "CC:22:3D:E3:CE:48",
         "port": 51826,
         "pin": "031-45-154"
     },
     
-    "description": "This is an example configuration file with one fake accessory and one fake platform. You can use this as a template for creating your own configuration file containing devices you actually own.",
-
+    "description": "This setups for all assesories in BeautyPoint",
+    "platforms":[{
+      "platform" : "iZone3AirConPlatform",
+      "url":"http://192.168.178.132/",
+      "name" : "iZone"
+    }],
     "accessories": [
         {
             "accessory": "GPIOGarageDoor",
-            "name": "Garage Door dev",
+            "name": "Garage Door",
             "doorSwitchPin": 4,
             "doorSensorPin": 24,
             "isNCSensor": true,
-            "doorOpensInSeconds": 14
+            "doorOpensInSeconds": 1
         },
         {
             "accessory": "mqtt-switch-tasmota",
