@@ -15,9 +15,9 @@ AC=
 while [ "$1" != "" ]; do
     echo "Parameter 1 equals $1"
     echo "You now have $# positional parameters"
-    	if [$1 == "MQTT" ]; then 
+    	if [ $1 == "MQTT" ]; then 
     		$MQTT=1
-    	elif [$1 == "AC"]; then 
+    	elif [ $1 == "AC"]; then 
     		$AC=1
     	fi  
     shift
