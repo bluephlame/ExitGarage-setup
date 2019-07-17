@@ -1,0 +1,117 @@
+{
+    "bridge": {
+        "name": "HomePi-Dev",
+        "username": "CC:22:3D:E3:CE:48",
+        "port": 51826,
+        "pin": "031-45-154"
+    },
+    
+    "description": "This is an example configuration file with one fake accessory and one fake platform. You can use this as a template for creating your own configuration file containing devices you actually own.",
+
+    "accessories": [
+        {
+            "accessory": "GPIOGarageDoor",
+            "name": "Garage Door dev",
+            "doorSwitchPin": 4,
+            "doorSensorPin": 24,
+            "isNCSensor": true,
+            "doorOpensInSeconds": 14
+        },
+        {
+            "accessory": "mqtt-switch-tasmota",
+            "switchType": "outlet",
+        
+            "name": "Kitchen Down Lights",
+        
+            "url": "mqtt://raspberrypi.fritz.box",
+            "username": "MQTT USER NAME",
+            "password": "MQTT PASSWORD",
+        
+            "topics": {
+                "statusGet": "stat/kitchen/RESULT",
+                "statusSet": "cmnd/kitchen/POWER1",
+                "stateGet": "tele/kitchen/STATE"
+            },
+            "onValue": "ON",
+            "offValue": "OFF",
+        
+            "activityTopic": "tele/kitchen/LWT",
+            "activityParameter": "Online",
+        
+            "startCmd": "cmnd/sonoff/TelePeriod",
+            "startParameter": "60"        
+        },
+        {
+            "accessory": "mqtt-switch-tasmota",
+            "switchType": "outlet",
+        
+            "name": "Bench Down Lights",
+        
+            "url": "mqtt://raspberrypi.fritz.box",
+            "username": "MQTT USER NAME",
+            "password": "MQTT PASSWORD",
+        
+            "topics": {
+                "statusGet": "stat/kitchen/RESULT",
+                "statusSet": "cmnd/kitchen/POWER2",           
+                "stateGet": "tele/kitchen/STATE"
+            },
+            "onValue": "ON",
+            "offValue": "OFF",
+        
+            "activityTopic": "tele/kitchen/LWT",
+            "activityParameter": "Online",
+        
+            "startCmd": "cmnd/sonoff/TelePeriod",
+            "startParameter": "60"
+        },
+        {
+            "accessory": "mqtt-switch-tasmota",
+            "switchType": "outlet",
+        
+            "name": "entry Down Light",
+        
+            "url": "mqtt://raspberrypi.fritz.box",
+            "username": "MQTT USER NAME",
+            "password": "MQTT PASSWORD",
+        
+            "topics": {
+                "statusGet": "stat/entry/RESULT",
+                "statusSet": "cmnd/entry/POWER2",           
+                "stateGet": "tele/entry/STATE"
+            },
+            "onValue": "ON",
+            "offValue": "OFF",
+        
+            "activityTopic": "tele/kitchen/LWT",
+            "activityParameter": "Online",
+        
+            "startCmd": "cmnd/sonoff/TelePeriod",
+            "startParameter": "60"
+        },
+        {
+            "accessory": "mqtt-switch-tasmota",
+            "switchType": "outlet",
+        
+            "name": "Front Door Down Lights",
+        
+            "url": "mqtt://raspberrypi.fritz.box",
+            "username": "MQTT USER NAME",
+            "password": "MQTT PASSWORD",
+        
+            "topics": {
+                "statusGet": "stat/entry/RESULT",
+                "statusSet": "cmnd/entry/POWER1",           
+                "stateGet": "tele/entry/STATE"
+            },
+            "onValue": "ON",
+            "offValue": "OFF",
+        
+            "activityTopic": "tele/kitchen/LWT",
+            "activityParameter": "Online",
+        
+            "startCmd": "cmnd/sonoff/TelePeriod",
+            "startParameter": "60"
+        }
+    ]
+}
