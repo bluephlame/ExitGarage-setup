@@ -50,7 +50,7 @@ sudo npm install -g pm2
 
 
 #install plugins
-npm install -g --unsafe-perm bluephlame/homebridge-gpio-garagedoor
+npm install -g --unsafe-perm @bluephlame/homebridge-gpio-garagedoor
 if [ "${AC}" == 1 ]; then
 	npm install -g --unsafe-perm homebridge-izone3-aircon-platform
 fi
