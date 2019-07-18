@@ -9,27 +9,11 @@ sudo apt-get update
 sudo apt-get -y upgrade
 sudo apt-get install git make
 
-MQTT=
-AC=
 
-while [ "$1" != "" ]; do
-    echo "Parameter 1 equals $1"
-    echo "You now have $# positional parameters"
-    	if [ $1 == "MQTT" ]; then 
-    		$MQTT=1
-    	elif [ $1 == "AC"]; then 
-    		$AC=1
-    	fi  
-    shift
+sudo apt update
+sudo apt install -y mosquitto mosquitto-clients
+sudo systemctl enable mosquitto.service
 
-done
-
-
-if [ "${MQTT}" == 1 ]; then
-	sudo apt update
-	sudo apt install -y mosquitto mosquitto-clients
-	sudo systemctl enable mosquitto.service
-fi
 #install node
 ARCH=`uname -m`
 echo "${ARCH}"
@@ -51,13 +35,9 @@ sudo npm install -g pm2
 
 #install plugins
 npm install -g --unsafe-perm @bluephlame/homebridge-gpio-garagedoor
-if [ "${AC}" == 1 ]; then
-	npm install -g --unsafe-perm homebridge-izone3-aircon-platform
-fi
+npm install -g --unsafe-perm homebridge-izone3-aircon-platform
+npm install -g --unsafe-perm @bluephlame/homebridge-mqtt-switch-tasmota
 
-if [ "${MQTT}" == 1 ]; then
-	npm install -g --unsafe-perm bluephlame/homebridge-mqtt-switch-tasmota
-fi
 #get dtb file and load into config.txt
 
 sudo wget -N https://github.com/bluephlame/ExitGarage-setup/raw/master/mygpio-overlay.dtb -O /boot/overlays/mygpio-overlay.dtb
